@@ -6,6 +6,7 @@ public class Main {
 	    printText("rwitczyk");
         printText("baksior");
 	    printText("bPapuzinski");
+	    printText("Grupa: Kicajace-Zajace Team Leader: Developer rwitczyk");
     }
 
     public static void printText(String str){
