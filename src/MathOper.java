@@ -1,4 +1,4 @@
-public class MathOper implements IArithemicsAdd, IArithmeticsDiff, IArithmeticsDiv  {
+public class MathOper implements IArithemicsAdd, IArithmeticsDiff, IArithmeticsMult, IArithmeticsDiv {
     @Override
     public double Addition(double A, double B) {
         return A + B;
@@ -12,5 +12,10 @@ public class MathOper implements IArithemicsAdd, IArithmeticsDiff, IArithmeticsD
     @Override
     public double Difference(double A, double B) {
         return A - B;
+    }
+
+    @Override
+    public double Multiplication(double A, double B) {
+        return A * B;
     }
 }
