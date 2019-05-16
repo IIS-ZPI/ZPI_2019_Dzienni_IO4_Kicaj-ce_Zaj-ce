@@ -9,10 +9,10 @@ public class Main {
 	    printText("Grupa: Kicajace-Zajace Team Leader: Developer rwitczyk");
 	    //1234
     }
-     // random comment
+    } // random comment
 
     public static void printText(String str){
-        System.out.println(str); // super comment 209505
+        System.out.println(str);
     }
     //new feature 209420
 }
