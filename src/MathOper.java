@@ -5,6 +5,11 @@ public class MathOper implements IArithemicsAdd, IArithmeticsDiff, IArithmeticsM
     }
 
     @Override
+    public double Devision(double A, double B) {
+        return A / B;
+    }
+
+    @Override
     public double Difference(double A, double B) {
         return A - B;
     }
@@ -12,10 +17,5 @@ public class MathOper implements IArithemicsAdd, IArithmeticsDiff, IArithmeticsM
     @Override
     public double Multiplication(double A, double B) {
         return A * B;
-    }
-
-    @Override
-    public double Devision(double A, double B) {
-        return A / B;
     }
 }
