@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_zpi_2019_dzienni_io4_kicaj-ce_zaj-ce" default="compile.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce">
+  <dirname property="module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.basedir" file="${ant.file.module_zpi_2019_dzienni_io4_kicaj-ce_zaj-ce}"/>
+  
+  <property name="module.jdk.home.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce" value="-encoding UTF-8 -source 7 -target 7 ${compiler.args}"/>
+  
+  <property name="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.output.dir" value="${module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.basedir}/out/production/ZPI_2019_Dzienni_IO4_Kicaj-ce_Zaj-ce"/>
+  <property name="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.testoutput.dir" value="${module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.basedir}/out/test/ZPI_2019_Dzienni_IO4_Kicaj-ce_Zaj-ce"/>
+  
+  <path id="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.module.production.classpath">
+    <path refid="${module.jdk.classpath.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce}"/>
+  </path>
+  
+  <path id="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.runtime.production.module.classpath">
+    <pathelement location="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.output.dir}"/>
+  </path>
+  
+  <path id="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.module.classpath">
+    <path refid="${module.jdk.classpath.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce}"/>
+    <pathelement location="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.output.dir}"/>
+  </path>
+  
+  <path id="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.runtime.module.classpath">
+    <pathelement location="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.testoutput.dir}"/>
+    <pathelement location="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce">
+    <patternset refid="excluded.from.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce"/>
+  </patternset>
+  
+  <path id="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.module.sourcepath">
+    <dirset dir="${module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce" depends="compile.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.production,compile.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.tests" description="Compile module ZPI_2019_Dzienni_IO4_Kicaj-ce_Zaj-ce"/>
+  
+  <target name="compile.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.production" depends="register.custom.compilers" description="Compile module ZPI_2019_Dzienni_IO4_Kicaj-ce_Zaj-ce; production classes">
+    <mkdir dir="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.output.dir}"/>
+    <javac2 destdir="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce}/javac">
+      <compilerarg line="${compiler.args.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce}"/>
+      <bootclasspath refid="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.module.bootclasspath"/>
+      <classpath refid="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.module.production.classpath"/>
+      <src refid="zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce"/>
+    </javac2>
+    
+    <copy todir="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.output.dir}">
+      <fileset dir="${module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.tests" depends="register.custom.compilers,compile.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.production" description="compile module ZPI_2019_Dzienni_IO4_Kicaj-ce_Zaj-ce; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.zpi_2019_dzienni_io4_kicaj-ce_zaj-ce" description="cleanup module">
+    <delete dir="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.output.dir}"/>
+    <delete dir="${zpi_2019_dzienni_io4_kicaj-ce_zaj-ce.testoutput.dir}"/>
+  </target>
+</project>
