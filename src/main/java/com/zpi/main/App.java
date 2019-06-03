@@ -28,17 +28,17 @@ public class App
 
         GetCall getCall = retrofit.create(GetCall.class);
 
-        Call<Quotations> response = getCall.loadRatesForSpecyfiedNumberOfDays();
+        Call<Quotations> response = getCall.loadRatesForSpecyfiedNumberOfDays("2", "json");
 
         response.enqueue(new Callback<Quotations>() {
             @Override
             public void onResponse(Call<Quotations> call, Response<Quotations> response) {
                 if(response.isSuccessful()){
                     Quotations quotations = response.body();
-                    quotations.toString();
+                    System.out.println(quotations.toString());
+                }else{
+                    System.out.println("fail");
                 }
-
-                System.out.println(response.isSuccessful());
             }
 
             @Override
