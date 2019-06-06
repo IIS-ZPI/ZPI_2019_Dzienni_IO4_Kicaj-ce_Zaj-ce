@@ -6,6 +6,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface GetCall {
-    @GET("rates/a/{currency}/last/{days}/")
-    Call<Quotations> loadRatesForSpecyfiedNumberOfDays(@Path("currency") String currency, @Path("days") String numberOfDays, @Query("format") String format);
+    @GET("rates/a/{currency}/{from}/{to}/")
+    Call<Quotations> loadRatesForSpecyfiedNumberOfDays(@Path("currency") String currency, @Path("from") String fromData, @Path("to") String toData,
+                                                       @Query("format") String format);
 }
