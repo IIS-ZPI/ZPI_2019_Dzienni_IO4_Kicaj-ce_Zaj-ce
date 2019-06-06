@@ -13,14 +13,14 @@ public class ApiCommunication {
     private static final String baseUrl = "http://api.nbp.pl/api/exchangerates/";
     private volatile Quotations q;
 
-    public Quotations getSessions(int numbOfDays, String currency) throws InterruptedException {
+    public Quotations getSessions(String fromData, String toData, String currency) throws InterruptedException {
         Gson gson = new GsonBuilder().setLenient().create();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create(gson)).build();
 
         GetCall getCall = retrofit.create(GetCall.class);
 
-        Call<Quotations> response = getCall.loadRatesForSpecyfiedNumberOfDays(currency, String.valueOf(numbOfDays), "json");
+        Call<Quotations> response = getCall.loadRatesForSpecyfiedNumberOfDays(currency, fromData, toData, "json");
 
         response.enqueue(new Callback<Quotations>() {
             @Override
