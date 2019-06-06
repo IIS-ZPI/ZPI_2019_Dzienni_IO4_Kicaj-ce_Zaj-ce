@@ -1,5 +1,11 @@
 package com.zpi.main;
 
+import org.apache.commons.lang.time.DateUtils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Hello world!
  *
@@ -7,9 +13,12 @@ package com.zpi.main;
 public class App 
 {
 
+    static DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+    static Date date = new Date();
+
     public static void main( String[] args ) throws InterruptedException {
         System.out.println( "Hello World!" );
         ApiCommunication apiCommunication = new ApiCommunication();
-        System.out.println(apiCommunication.getSessions("2012-01-02", "2012-02-01", "gbp").toString());
+        System.out.println(apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-8)), df.format(date), "gbp").toString());
     }
 }
