@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -27,10 +28,19 @@ public class ApiCommunicationTest {
     @Test
     public void when_Given_Five_Days_Should_Return_5_Values() throws InterruptedException {
         int days=5;
-        int numberOfValues=5+1;//+1 because function returns 5 values and 1 currency name
-        String temp =apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),days*(-1)-2)), df.format(date), "gbp").toString();
-        String result[] = temp.split("\n");
-        Assert.assertEquals(numberOfValues,result.length);
+        int numberOfValues=5;
+        List<Rate> result=apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),days*(-1)-2)), df.format(date), "gbp").getRates();
+        Assert.assertEquals(numberOfValues,result.size());
+    }
+    @Test
+    public void when_Given_Specified_Days_Should_Return_Specified_Values() throws InterruptedException {
+
+       /* String fromDate="2019-06-06";
+        String toDate="2019-06-11";
+        //String result =apiCommunication.getSessions(fromDate, toDate, "gbp").getRates();
+        String expectedResult="GBP\n4.8274\n4.827\n4.7897\n";
+        Assert.assertEquals(expectedResult,result);
+*/
     }
 
 
