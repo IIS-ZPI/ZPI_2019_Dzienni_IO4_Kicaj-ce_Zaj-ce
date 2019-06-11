@@ -47,8 +47,12 @@ public class ApiCommunicationTest {
             Assert.assertEquals(expectedResult.get(i).doubleValue(), result.get(i).getMid(),0.001);
 
         }
-
-
+    }
+    @Test(expected = NullPointerException.class)
+    public void when_Given_Wrong_Argument_Should_Throw_NullPointerException() throws InterruptedException {
+        String fromDate="2019-06-06";
+        String toDate="wrong";
+        apiCommunication.getSessions(fromDate, toDate, "gbp").toString();
     }
 
 
