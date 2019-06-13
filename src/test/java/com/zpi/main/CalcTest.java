@@ -2,7 +2,6 @@ package com.zpi.main;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,10 +18,13 @@ public class CalcTest {
     int counterForDecreasedSession;
     int counterForNoChangesSession;
     double standardDeviation;
+    double coefficientOfVariation;
+    List<Double> dominants;
     @Before
     public void init(){
         testdata = new Rate[10];
         data = new ArrayList<Rate>();
+        dominants = new ArrayList<Double>();
         makeTestData();
 
 
@@ -46,7 +48,7 @@ public class CalcTest {
         Assert.assertEquals(counterForGrowthSession,result);
 
     }
-    @Ignore
+
     @Test
     public void decreasedSession_for_test_data_should_return_correct_value(){
         int result=Calc.getDecreasedSession(data);
@@ -65,7 +67,23 @@ public class CalcTest {
     public void standardDeviation_for_test_data_should_return_correct_value(){
         double result=Calc.getStandardDeviation(data);
 
-        Assert.assertEquals(standardDeviation,result,0.0000001);
+        Assert.assertEquals(standardDeviation,result,0.001);
+    }
+    @Test
+    public void getAvarage_for_test_data_should_return_correct_value(){
+        double result=Calc.getCoefficientOfVariation(data);
+
+        Assert.assertEquals(coefficientOfVariation,result,0.001);
+    }
+    @Test
+    public void getDominants_for_test_data_should_return_correct_value(){
+        List<Double> result=Calc.getDominants(data);
+
+        Assert.assertEquals(dominants.size(),result.size());
+        for (Double aDouble : result) {
+            Assert.assertTrue(dominants.contains(aDouble));
+        }
+
     }
 
 
@@ -88,5 +106,8 @@ public class CalcTest {
         counterForDecreasedSession=2;
         counterForNoChangesSession=1;
         standardDeviation=1.7883574089712106;
+        coefficientOfVariation =29.032;
+        dominants.add(5.1);
+        dominants.add(5.1);
     }
 }
