@@ -25,12 +25,14 @@ public class Calc {
         double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
         for (Rate r: rateList
         ) {
+      //      System.out.println("Gr " + r.getMid());
             if(r.getMid() < temp_value) {
                 temp_value = r.getMid();
                 czyMalaloPrzedChwila = true;
             }
             else
             {
+                temp_value = r.getMid();
                 if(czyMalaloPrzedChwila)
                 {
                     counter++;
@@ -49,6 +51,7 @@ public class Calc {
         double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
         for (Rate r: rateList
         ) {
+         //   System.out.println("Dc " + r.getMid());
             if(r.getMid() > temp_value) {
                 temp_value = r.getMid();
                 czyZwiekszaloSiePrzedChwila = true;
