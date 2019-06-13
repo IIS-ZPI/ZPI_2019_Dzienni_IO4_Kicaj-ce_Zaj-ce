@@ -23,9 +23,15 @@ public class Calc {
         int counter = 0;
         boolean czyMalaloPrzedChwila = false;
         double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
+
+        if(temp_value < rateList.get(1).getMid())
+        {
+            counter++;
+        }
+
         for (Rate r: rateList
         ) {
-      //      System.out.println("Gr " + r.getMid());
+            System.out.println("Gr " + r.getMid());
             if(r.getMid() < temp_value) {
                 temp_value = r.getMid();
                 czyMalaloPrzedChwila = true;
@@ -41,6 +47,7 @@ public class Calc {
             }
         }
 
+
         return counter;
     }
 
@@ -49,6 +56,11 @@ public class Calc {
         int counter = 0;
         boolean czyZwiekszaloSiePrzedChwila = false;
         double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
+
+        if(temp_value > rateList.get(1).getMid())
+        {
+            counter++;
+        }
         for (Rate r: rateList
         ) {
          //   System.out.println("Dc " + r.getMid());
@@ -58,6 +70,7 @@ public class Calc {
             }
             else
             {
+                temp_value = r.getMid();
                 if(czyZwiekszaloSiePrzedChwila)
                 {
                     counter++;
@@ -72,20 +85,21 @@ public class Calc {
     public static int getNoChangesSession(List<Rate> rateList)
     {
         int counter = -1;
-        boolean czyMalaloPrzedChwila = false;
+        boolean czyByloStalePrzedChwila = false;
         double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
         for (Rate r: rateList
         ) {
             if(r.getMid() == temp_value) {
                 temp_value = r.getMid();
-                czyMalaloPrzedChwila = true;
+                czyByloStalePrzedChwila = true;
             }
             else
             {
-                if(czyMalaloPrzedChwila)
+                temp_value = r.getMid();
+                if(czyByloStalePrzedChwila)
                 {
                     counter++;
-                    czyMalaloPrzedChwila = false;
+                    czyByloStalePrzedChwila = false;
                 }
             }
         }
