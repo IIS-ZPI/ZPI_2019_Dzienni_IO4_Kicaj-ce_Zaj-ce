@@ -14,6 +14,7 @@ public class ApiCommunication {
     private volatile Quotations q;
 
     public Quotations getSessions(String fromData, String toData, String currency) throws InterruptedException {
+        q = null;
         Gson gson = new GsonBuilder().setLenient().create();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create(gson)).build();

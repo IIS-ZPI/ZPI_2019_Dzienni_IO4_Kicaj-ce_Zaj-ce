@@ -26,5 +26,8 @@ public class App
         System.out.println("Ilosc sesji wzrostowych: " + Calc.getGrowthSession(quotations.getRates()));
         System.out.println("Ilosc sesji malejacych: " + Calc.getDecreasedSession(quotations.getRates()));
         System.out.println("Ilosc sesji bez zmian: " + Calc.getNoChangesSession(quotations.getRates()));
+
+        Quotations quotations2 = apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-7)), df.format(date), "usd");
+        Calc.getChangeSession( quotations.getCurrency(), quotations2.getCurrency(), quotations.getRates(), quotations2.getRates() );
     }
 }

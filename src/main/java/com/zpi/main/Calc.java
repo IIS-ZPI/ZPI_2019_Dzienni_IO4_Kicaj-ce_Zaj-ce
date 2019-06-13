@@ -201,4 +201,24 @@ public class Calc {
             doubleList.add( rate.getMid() );
         }
     }
+
+    public static void getChangeSession(String name, String name2, List<Rate> rateList, List<Rate> rateList2) {
+        List<Double> doubleList = new ArrayList<>();
+        getListOfRate( rateList, doubleList );
+        List<Double> doubleList2 = new ArrayList<>();
+        getListOfRate( rateList2, doubleList2 );
+        List<Double> changes = new ArrayList<>();
+        List<Double> changes2 = new ArrayList<>();
+
+        if(doubleList.size() !=  doubleList2.size()) {
+            System.out.println("Rozkład zmian - Porównywane waluty mają różną długość.");
+        } else {
+            for (int i = 1; i < doubleList.size(); i++) {
+                changes.add((double) doubleList.get(i) - doubleList.get(i - 1));
+                changes2.add((double) doubleList2.get(i) - doubleList2.get(i - 1));
+            }
+            System.out.println("Rozkład zmian - waluta " + name + ": " + changes);
+            System.out.println("Rozkład zmian - waluta " + name2 + ": " + changes2);
+        }
+    }
 }
