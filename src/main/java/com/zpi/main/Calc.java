@@ -55,6 +55,29 @@ public class Calc {
         return dominants;
     }
 
+    public static double getStandardDeviation(List<Rate> rateList){
+        List<Double> doubleList = prepareList( rateList );
+
+        double avarage = getAvarage(doubleList);
+
+        double standardDeviation = 0;
+
+        for (Double aDouble : doubleList) {
+            standardDeviation += Math.pow( (aDouble - avarage), 2 );
+        }
+
+        return Math.sqrt( standardDeviation / (double)doubleList.size() );
+    }
+
+    private static double getAvarage(List<Double> doubleList) {
+        double sum = 0;
+        for (Double aDouble : doubleList) {
+            sum += aDouble;
+        }
+
+        return sum/(double)doubleList.size();
+    }
+
     private static List<Double> prepareList(List<Rate> rateList) {
         List<Double> doubleList = new ArrayList<>();
 
