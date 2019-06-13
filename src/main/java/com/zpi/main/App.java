@@ -20,9 +20,10 @@ public class App
         ApiCommunication apiCommunication = new ApiCommunication();
      //   System.out.println(apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-8)), df.format(date), "gbp").toString());
         Quotations quotations = apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-7)), df.format(date), "gbp");
-        System.out.println(Calc.getMedian( quotations.getRates() ));
-        System.out.println(Calc.getDominants( quotations.getRates() ).toString());
-        System.out.println(Calc.getStandardDeviation( quotations.getRates() ));
+        System.out.println(quotations.toString());
+        System.out.println("\nMediana: " + Calc.getMedian( quotations.getRates() ));
+        System.out.println("Dominanta: " + Calc.getDominants( quotations.getRates() ).toString());
+        System.out.println("Odchylenie standardowe z próby: " + Calc.getStandardDeviation( quotations.getRates() ));
         System.out.println("Ilosc sesji wzrostowych: " + Calc.getGrowthSession(quotations.getRates()));
         System.out.println("Ilosc sesji malejacych: " + Calc.getDecreasedSession(quotations.getRates()));
         System.out.println("Ilosc sesji bez zmian: " + Calc.getNoChangesSession(quotations.getRates()));

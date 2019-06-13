@@ -37,7 +37,7 @@ public class Quotations {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(code).append("\n");
         for(Rate r : rates){
-            stringBuilder.append(r.getMid()).append("\n");
+            stringBuilder.append(r.getMid()).append("  ");
         }
 
         return stringBuilder.toString();
