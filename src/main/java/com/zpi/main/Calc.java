@@ -16,7 +16,78 @@ public class Calc {
         }else {
             return doubleList.get( ((doubleList.size() + 1)/2) - 1  );
         }
+    }
 
+    public static int getGrowthSession(List<Rate> rateList)
+    {
+        int counter = 0;
+        boolean czyMalaloPrzedChwila = false;
+        double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
+        for (Rate r: rateList
+        ) {
+            if(r.getMid() < temp_value) {
+                temp_value = r.getMid();
+                czyMalaloPrzedChwila = true;
+            }
+            else
+            {
+                if(czyMalaloPrzedChwila)
+                {
+                    counter++;
+                    czyMalaloPrzedChwila = false;
+                }
+            }
+        }
+
+        return counter;
+    }
+
+    public static int getDecreasedSession(List<Rate> rateList)
+    {
+        int counter = 0;
+        boolean czyZwiekszaloSiePrzedChwila = false;
+        double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
+        for (Rate r: rateList
+        ) {
+            if(r.getMid() > temp_value) {
+                temp_value = r.getMid();
+                czyZwiekszaloSiePrzedChwila = true;
+            }
+            else
+            {
+                if(czyZwiekszaloSiePrzedChwila)
+                {
+                    counter++;
+                    czyZwiekszaloSiePrzedChwila = false;
+                }
+            }
+        }
+
+        return counter;
+    }
+
+    public static int getNoChangesSession(List<Rate> rateList)
+    {
+        int counter = -1;
+        boolean czyMalaloPrzedChwila = false;
+        double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
+        for (Rate r: rateList
+        ) {
+            if(r.getMid() == temp_value) {
+                temp_value = r.getMid();
+                czyMalaloPrzedChwila = true;
+            }
+            else
+            {
+                if(czyMalaloPrzedChwila)
+                {
+                    counter++;
+                    czyMalaloPrzedChwila = false;
+                }
+            }
+        }
+
+        return counter;
     }
 
     public static List<Double> getDominants(List<Rate> rateList){
