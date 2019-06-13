@@ -19,7 +19,7 @@ public class App
     public static void main( String[] args ) throws InterruptedException {
         ApiCommunication apiCommunication = new ApiCommunication();
      //   System.out.println(apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-8)), df.format(date), "gbp").toString());
-        Quotations quotations = apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-30)), df.format(date), "gbp");
+        Quotations quotations = apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-7)), df.format(date), "gbp");
         System.out.println(Calc.getMedian( quotations.getRates() ));
         System.out.println(Calc.getDominants( quotations.getRates() ).toString());
         System.out.println(Calc.getStandardDeviation( quotations.getRates() ));

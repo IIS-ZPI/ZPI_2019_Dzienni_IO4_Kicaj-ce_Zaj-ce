@@ -20,7 +20,7 @@ public class Calc {
 
     public static int getGrowthSession(List<Rate> rateList)
     {
-        int counter = 0;
+        int counter = -1;
         boolean czyMalaloPrzedChwila = false;
         double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
 
@@ -35,6 +35,11 @@ public class Calc {
             if(r.getMid() < temp_value) {
                 temp_value = r.getMid();
                 czyMalaloPrzedChwila = true;
+            }
+            else if(r.getMid() == temp_value)
+            {
+                counter++;
+                czyMalaloPrzedChwila = false;
             }
             else
             {
@@ -53,7 +58,7 @@ public class Calc {
 
     public static int getDecreasedSession(List<Rate> rateList)
     {
-        int counter = 0;
+        int counter = -1;
         boolean czyZwiekszaloSiePrzedChwila = false;
         double temp_value = rateList.get(0).getMid(); // przypisujemy pierwszy element
 
@@ -67,6 +72,11 @@ public class Calc {
             if(r.getMid() > temp_value) {
                 temp_value = r.getMid();
                 czyZwiekszaloSiePrzedChwila = true;
+            }
+            else if(r.getMid() == temp_value)
+            {
+                counter++;
+                czyZwiekszaloSiePrzedChwila = false;
             }
             else
             {
