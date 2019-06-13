@@ -6,6 +6,10 @@ public class Rate {
     private String effectiveDate;
     private double mid;
 
+    public Rate(double mid) {
+        this.mid = mid;
+    }
+
     public String getNo() {
         return no;
     }

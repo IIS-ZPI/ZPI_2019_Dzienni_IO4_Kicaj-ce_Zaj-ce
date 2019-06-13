@@ -30,7 +30,7 @@ public class ApiCommunicationTest {
     public void when_Given_Five_Days_Should_Return_5_Values() throws InterruptedException {
         int days=5;
         int numberOfValues=5;
-        List<Rate> result=apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),days*(-1)-2)), df.format(date), "gbp").getRates();
+        List<Rate> result=apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),days*(-1)-1)), df.format(date), "gbp").getRates();
         Assert.assertEquals(numberOfValues,result.size());
     }
     @Test

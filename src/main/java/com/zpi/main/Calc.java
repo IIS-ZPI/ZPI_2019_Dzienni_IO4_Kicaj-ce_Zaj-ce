@@ -12,7 +12,7 @@ public class Calc {
             double d1 = doubleList.get( (doubleList.size()/2) - 1 );
             double d2 = doubleList.get( ((doubleList.size()/2) + 1) - 1 );
 
-            return (d1*d2)/2;
+            return (d1+d2)/2;
         }else {
             return doubleList.get( ((doubleList.size() + 1)/2) - 1  );
         }
@@ -31,7 +31,7 @@ public class Calc {
 
         for (Rate r: rateList
         ) {
-            System.out.println("Gr " + r.getMid());
+      //      System.out.println("Gr " + r.getMid());
             if(r.getMid() < temp_value) {
                 temp_value = r.getMid();
                 czyMalaloPrzedChwila = true;
@@ -51,7 +51,6 @@ public class Calc {
                 }
             }
         }
-
 
         return counter;
     }
