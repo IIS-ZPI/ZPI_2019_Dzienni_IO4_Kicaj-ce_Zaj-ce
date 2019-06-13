@@ -137,7 +137,7 @@ public class Calc {
             standardDeviation += Math.pow( (aDouble - avarage), 2 );
         }
 
-        return Math.sqrt( standardDeviation / (double)doubleList.size() );
+        return Math.sqrt( standardDeviation / ((double)doubleList.size() - 1) ); // n-1, odchylenie standardowe z próby
     }
 
     private static double getAvarage(List<Double> doubleList) {
@@ -147,6 +147,15 @@ public class Calc {
         }
 
         return sum/(double)doubleList.size();
+    }
+
+    public static double getCoefficientOfVariation(List<Rate> rateList){
+        List<Double> doubleList = prepareList( rateList );
+
+        double avarage = getAvarage(doubleList);
+        double deviation = getStandardDeviation(rateList);
+
+        return (double)deviation/avarage*100; // odchylenie standardowe z próby / średnia arytmetyczna z próby. - podawane w procentach
     }
 
     private static List<Double> prepareList(List<Rate> rateList) {
