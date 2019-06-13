@@ -22,5 +22,6 @@ public class App
         System.out.println(apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-8)), df.format(date), "gbp").toString());
         Quotations quotations = apiCommunication.getSessions(df.format(DateUtils.addDays(new Date(),-8)), df.format(date), "gbp");
         System.out.println(Calc.getMedian( quotations.getRates() ));
+        System.out.println(Calc.getDominants( quotations.getRates() ).toString());
     }
 }

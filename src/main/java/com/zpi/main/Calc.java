@@ -1,17 +1,12 @@
 package com.zpi.main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Calc {
     public static double getMedian(List<Rate> rateList){
-        List<Double> doubleList = new ArrayList<>();
-
-        for (Rate rate : rateList) {
-            doubleList.add( rate.getMid() );
-        }
-
-        doubleList.sort( Double::compareTo );
+        List<Double> doubleList = prepareList( rateList );
 
         if(doubleList.size() % 2 == 0){
             double d1 = doubleList.get( (doubleList.size()/2) - 1 );
@@ -22,5 +17,56 @@ public class Calc {
             return doubleList.get( ((doubleList.size() + 1)/2) - 1  );
         }
 
+    }
+
+    public static List<Double> getDominants(List<Rate> rateList){
+        List<Double> doubleList = prepareList( rateList );
+
+        HashMap<Double, Integer> hashMap = new HashMap<>();
+
+        for (Double aDouble : doubleList) {
+            if(!hashMap.containsKey( aDouble )){
+                hashMap.put( aDouble, 1 );
+            }else {
+                int temp = hashMap.get(aDouble);
+                hashMap.remove( aDouble );
+                hashMap.put( aDouble, temp + 1 );
+            }
+        }
+
+        int maxVal = 0;
+
+        for (Double aDouble : doubleList) {
+            int temp = hashMap.get( aDouble );
+            if(maxVal == 0){
+                maxVal = temp;
+            }else if(maxVal < temp){
+                maxVal = temp;
+            }
+        }
+
+        List<Double> dominants = new ArrayList<>();
+        for (Double aDouble : doubleList) {
+            if(maxVal == hashMap.get( aDouble )){
+                dominants.add( aDouble );
+            }
+        }
+
+        return dominants;
+    }
+
+    private static List<Double> prepareList(List<Rate> rateList) {
+        List<Double> doubleList = new ArrayList<>();
+
+        getListOfRate( rateList, doubleList );
+
+        doubleList.sort( Double::compareTo );
+        return doubleList;
+    }
+
+    private static void getListOfRate(List<Rate> rateList, List<Double> doubleList) {
+        for (Rate rate : rateList) {
+            doubleList.add( rate.getMid() );
+        }
     }
 }
