@@ -38,8 +38,10 @@ public class Calc {
             }
             else if(r.getMid() == temp_value)
             {
-                counter++;
-                czyMalaloPrzedChwila = false;
+                if(czyMalaloPrzedChwila) {
+                    counter++;
+                    czyMalaloPrzedChwila = false;
+                }
             }
             else
             {
@@ -74,6 +76,7 @@ public class Calc {
             }
             else if(r.getMid() == temp_value)
             {
+
                 counter++;
                 czyZwiekszaloSiePrzedChwila = false;
             }
