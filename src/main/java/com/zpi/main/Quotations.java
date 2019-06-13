@@ -35,7 +35,7 @@ public class Quotations {
     @Override
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(currency).append("\n").append(code).append("\n");
+        stringBuilder.append(code).append("\n");
         for(Rate r : rates){
             stringBuilder.append(r.getMid()).append("\n");
         }
